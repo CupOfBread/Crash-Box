@@ -1,0 +1,3 @@
+class PortfolioState {
+  PortfolioState() {}
+}
