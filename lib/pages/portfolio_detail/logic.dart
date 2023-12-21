@@ -14,7 +14,7 @@ class PortfolioDetailLogic extends GetxController {
   final PortfolioDetailState state = PortfolioDetailState();
   final dio = GetIt.I<Dio>();
   Timer? timer;
-  String? queryStr = '';
+  String? stockQueryStr = '';
 
   @override
   Future<void> onInit() async {
@@ -83,7 +83,7 @@ class PortfolioDetailLogic extends GetxController {
 
       // 生成饼图
       state.graphData.add(BrnDoughnutDataItem(
-          title: detail.name!.substring(0, detail.name!.length > 4 ? 5 : 4),
+          title: detail.name!.substring(0, detail.name!.length > 4 ? 6 : 4),
           value: detail.unitPrice! * detail.amount!,
           color: state.randomColors[state.detailList.indexOf(detail)]));
 
@@ -96,19 +96,24 @@ class PortfolioDetailLogic extends GetxController {
     for (var element in state.detailList) {
       // 跳过已清仓股票、基金
       if (element.over == 1 || element.type == 'funds') continue;
-      if (queryStr!.isEmpty) {
-        queryStr = element.location! + element.code!;
+      if (stockQueryStr!.isEmpty) {
+        stockQueryStr = element.location! + element.code!;
       } else {
-        queryStr = '$queryStr,${element.location!}${element.code!}';
+        stockQueryStr = '$stockQueryStr,${element.location!}${element.code!}';
       }
     }
-    if (queryStr!.isEmpty) return;
-    final currentStockData = await dio.get("https://stock.xueqiu.com/v5/stock/realtime/quotec.json?symbol=${queryStr!}");
+    if (stockQueryStr!.isEmpty) return;
+    final currentStockData = await dio.get("https://stock.xueqiu.com/v5/stock/realtime/quotec.json?symbol=${stockQueryStr!}");
     // ===============请求雪球股票实盘API===============
+    generateStockListData(currentStockData);
 
+    state.stockList.sort((a, b) => b['percent']!.compareTo(a['percent']!));
+    BrnToast.show("刷新实盘数据成功", Get.overlayContext!);
+  }
+
+  void generateStockListData(currentStockData) {
     // 遍历组合内所有持仓
     for (var detail in state.detailList) {
-
       // 跳过已经清仓的股票&基金
       if (detail.over == 1) continue;
 
@@ -136,7 +141,5 @@ class PortfolioDetailLogic extends GetxController {
       item["percent"] = ((detail.unitPrice! * detail.amount!.toDouble()) / state.totalCost * 100.0).toStringAsFixed(2);
       state.stockList.add(item);
     }
-    state.stockList.sort((a, b) => b['percent']!.compareTo(a['percent']!));
-    BrnToast.show("刷新实盘数据成功", Get.overlayContext!);
   }
 }

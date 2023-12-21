@@ -5,6 +5,7 @@ import 'package:getwidget/colors/gf_color.dart';
 import 'package:getwidget/components/appbar/gf_appbar.dart';
 import 'package:getwidget/getwidget.dart';
 
+import '../../components/portfolio_list/logic.dart';
 import 'logic.dart';
 
 class PortfolioPage extends StatelessWidget {
@@ -20,6 +21,20 @@ class PortfolioPage extends StatelessWidget {
         backgroundColor: GFColors.DARK,
         brightness: Brightness.dark,
         title: Text("Crash Box"),
+        actions: [
+          GFIconButton(
+            padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 8),
+            icon: const Icon(
+              Icons.add_chart,
+              color: Colors.white,
+            ),
+            type: GFButtonType.transparent,
+            onPressed: () {
+              final portfolioListLogic = Get.find<PortfolioListLogic>();
+              portfolioListLogic.getPortfolioList();
+            },
+          )
+        ],
       ),
       body: SafeArea(
         child: Column(

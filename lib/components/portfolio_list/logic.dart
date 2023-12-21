@@ -20,14 +20,13 @@ class PortfolioListLogic extends GetxController {
   }
 
   void getPortfolioList() async {
-    final response = await dio.get("portfolio/queryPage",
-        queryParameters: {'current': state.current, 'size': state.size});
+    final response = await dio.get("portfolio/queryPage", queryParameters: {'current': state.current, 'size': state.size});
 
     var list = response.data['result']['records'];
-    List<Portfolio> portfolioList =
-        List<Portfolio>.from(list.map((e) => Portfolio.fromJson(e)).toList());
+    List<Portfolio> portfolioList = List<Portfolio>.from(list.map((e) => Portfolio.fromJson(e)).toList());
 
     state.portfolioList = portfolioList;
+    BrnToast.show("获取组合列表成功", Get.overlayContext!);
     update();
   }
 
@@ -58,8 +57,7 @@ class PortfolioListLogic extends GetxController {
       child: BrnTagCustom(
         tagText: tags.split(',')[0],
         backgroundColor: Colors.green,
-        tagBorderRadius: const BorderRadius.only(
-            bottomLeft: Radius.circular(5), topRight: Radius.circular(5)),
+        tagBorderRadius: const BorderRadius.only(bottomLeft: Radius.circular(5), topRight: Radius.circular(5)),
       ),
     );
   }

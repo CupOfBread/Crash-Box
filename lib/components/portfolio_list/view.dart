@@ -1,10 +1,11 @@
-import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'logic.dart';
 
 class PortfolioListComponent extends StatefulWidget {
+  const PortfolioListComponent({super.key});
+
   @override
   _PortfolioListComponent createState() => _PortfolioListComponent();
 }
@@ -52,7 +53,7 @@ class _PortfolioListComponent extends State<PortfolioListComponent> with Automat
                                   children: [
                                     Text(
                                       state.portfolioList[index].portfolioName ?? '-',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Color(0xFF171717),
                                         fontSize: 16,
                                         letterSpacing: 1,
@@ -67,7 +68,7 @@ class _PortfolioListComponent extends State<PortfolioListComponent> with Automat
                                   children: [
                                     Text(
                                       state.portfolioList[index].user?.nickName ?? '',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Color.fromRGBO(102, 102, 102, 1),
                                         fontSize: 12,
                                       ),
@@ -79,45 +80,22 @@ class _PortfolioListComponent extends State<PortfolioListComponent> with Automat
                           ),
                           Container(
                             width: MediaQuery.sizeOf(context).width * 0.3,
-                            decoration: BoxDecoration(),
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                // Container(
-                                //   decoration: BoxDecoration(),
-                                //   child: Column(
-                                //     mainAxisSize: MainAxisSize.max,
-                                //     mainAxisAlignment: MainAxisAlignment.center,
-                                //     crossAxisAlignment: CrossAxisAlignment.end,
-                                //     children: [
-                                //       Text(
-                                //         '0.7349',
-                                //       ),
-                                //       Text(
-                                //         '0.00%',
-                                //         style: TextStyle(
-                                //           fontSize: 11,
-                                //         ),
-                                //       ),
-                                //     ],
-                                //   ),
-                                // ),
-                                Container(
-                                  decoration: BoxDecoration(),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                        state.portfolioList[index].marketValue!.toStringAsFixed(2),
-                                        style: TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
-                                      ),
-                                      logic.getPercent(state.portfolioList[index].marketValue!, state.portfolioList[index].marketValueYes!),
-                                    ],
-                                  ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      state.portfolioList[index].marketValue!.toStringAsFixed(2),
+                                      style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
+                                    ),
+                                    logic.getPercent(state.portfolioList[index].marketValue!, state.portfolioList[index].marketValueYes!),
+                                  ],
                                 ),
                               ],
                             ),
