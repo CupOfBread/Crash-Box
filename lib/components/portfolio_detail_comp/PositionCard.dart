@@ -48,6 +48,7 @@ class PositionCard extends StatelessWidget {
                             child: Text(
                               item['stockName'] ?? '-',
                               style: const TextStyle(
+                                overflow: TextOverflow.ellipsis,
                                 fontSize: 17,
                                 fontWeight: FontWeight.w800,
                               ),

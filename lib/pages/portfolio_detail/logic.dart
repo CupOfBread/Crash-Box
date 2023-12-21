@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:bruno/bruno.dart';
 import 'package:crash_box/models/Portfolio.dart';
@@ -9,7 +8,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
-import '../../common/Logger.dart';
 import 'state.dart';
 
 class PortfolioDetailLogic extends GetxController {
@@ -63,7 +61,9 @@ class PortfolioDetailLogic extends GetxController {
     state.totalCost = 0.0;
     state.clearanceIncome = 0.0;
     state.stockList = [];
+    state.todayIncome = 0.0;
 
+    // 获取后端数据
     if (response.data['result']['portfolio'] != null) {
       state.portfolio = Portfolio.fromJson(response.data['result']['portfolio']);
     }
@@ -74,25 +74,45 @@ class PortfolioDetailLogic extends GetxController {
       state.detailList = List<PortfolioDetail>.from(response.data['result']['detail'].map((e) => PortfolioDetail.fromJson(e)).toList());
     }
 
+    for (var detail in state.detailList) {
+      // 累加已清仓股票&基金收益
+      if (detail.over == 1) {
+        state.clearanceIncome += detail.overIncome;
+        continue;
+      }
+
+      // 生成饼图
+      state.graphData.add(BrnDoughnutDataItem(
+          title: detail.name!.substring(0, detail.name!.length > 4 ? 5 : 4),
+          value: detail.unitPrice! * detail.amount!,
+          color: state.randomColors[state.detailList.indexOf(detail)]));
+
+      // 计算总成本
+      state.totalCost += detail.unitPrice! * detail.amount!;
+    }
+
+    // ===============请求雪球股票实盘API===============
+    // 组装查询股票实盘字符串
     for (var element in state.detailList) {
-      if (element.over == 1) continue;
+      // 跳过已清仓股票、基金
+      if (element.over == 1 || element.type == 'funds') continue;
       if (queryStr!.isEmpty) {
         queryStr = element.location! + element.code!;
       } else {
         queryStr = '$queryStr,${element.location!}${element.code!}';
       }
-      state.graphData.add(BrnDoughnutDataItem(
-          title: element.name!, value: element.unitPrice! * element.amount!, color: state.randomColors[state.detailList.indexOf(element)]));
-      state.totalCost += element.unitPrice! * element.amount!;
     }
-
+    if (queryStr!.isEmpty) return;
     final currentStockData = await dio.get("https://stock.xueqiu.com/v5/stock/realtime/quotec.json?symbol=${queryStr!}");
+    // ===============请求雪球股票实盘API===============
 
+    // 遍历组合内所有持仓
     for (var detail in state.detailList) {
-      if (detail.over == 1) {
-        state.clearanceIncome += detail.overIncome;
-        continue;
-      }
+
+      // 跳过已经清仓的股票&基金
+      if (detail.over == 1) continue;
+
+      // 匹配从雪球股票API查询的数据
       var stockCurrent;
       for (var data in currentStockData.data['data']) {
         if (data['symbol'] == detail.location! + detail.code!) {
@@ -101,13 +121,13 @@ class PortfolioDetailLogic extends GetxController {
         }
       }
 
+      // 累加当日浮动收益
       state.todayIncome += (stockCurrent['chg'] * detail.amount);
 
       Map<String, String> item = {};
       item["stockName"] = '${detail.name}(${detail.location}${detail.code})';
       item["costUnitPrice"] = detail.unitPrice!.toStringAsFixed(3);
       item["currentUnitPrice"] = stockCurrent['current'].toStringAsFixed(3);
-
       if (stockCurrent['percent'] == null)
         item["stockPercent"] = '0.00';
       else

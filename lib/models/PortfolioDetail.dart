@@ -13,7 +13,7 @@ class PortfolioDetail {
   int? over;
   dynamic overIncome;
   double? unitPrice;
-  int? amount;
+  double? amount;
   DateTime? purchaseTime;
   DateTime? updateTime;
   String? location;
