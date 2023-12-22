@@ -62,6 +62,7 @@ class PortfolioDetailLogic extends GetxController {
     state.clearanceIncome = 0.0;
     state.stockList = [];
     state.todayIncome = 0.0;
+    stockQueryStr = '';
 
     // 获取后端数据
     if (response.data['result']['portfolio'] != null) {

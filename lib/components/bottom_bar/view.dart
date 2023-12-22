@@ -26,7 +26,7 @@ class BottomBarComponent extends StatelessWidget {
           },
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.savings), label: "组合"),
-            BottomNavigationBarItem(icon: Icon(Icons.face), label: "我的"),
+            BottomNavigationBarItem(icon: Icon(Icons.settings), label: "设置"),
           ]);
     });
   }

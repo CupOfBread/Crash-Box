@@ -16,7 +16,7 @@ void initDio() {
   final dio = Dio();
 
   dio.options.baseUrl = GLOBAL_VALUE.serverUrl;
-  dio.options.connectTimeout = const Duration(seconds: 5);
+  dio.options.connectTimeout = const Duration(seconds: 10);
   dio.options.receiveTimeout = const Duration(seconds: 3);
   dio.interceptors.add(
     InterceptorsWrapper(
@@ -34,7 +34,7 @@ void initDio() {
         return handler.next(response);
       },
       onError: (DioException error, ErrorInterceptorHandler handler) {
-        BrnToast.show("服务器连接失败: ${error.message.toString()}", Get.overlayContext!);
+        BrnToast.show("网络连接失败", Get.overlayContext!);
         return handler.next(error);
       },
     ),

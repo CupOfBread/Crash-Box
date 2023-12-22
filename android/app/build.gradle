@@ -50,6 +50,16 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                output ->
+                    def outputFile = output.outputFile
+                    if (outputFile.name.contains("release")) {
+                        outputFileName = "app_release_android.apk"
+                    }
+            }
+    }
 }
 
 flutter {
