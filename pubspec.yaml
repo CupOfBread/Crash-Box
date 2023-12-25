@@ -23,6 +23,7 @@ dependencies:
   logger: ^2.0.2+1
   url_launcher: ^6.2.2
   date_format: ^2.0.7
+  fl_chart: ^0.65.0
 
   bruno: ^3.4.3
   getwidget: ^4.0.0

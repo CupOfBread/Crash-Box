@@ -78,7 +78,7 @@ class PositionCard extends StatelessWidget {
                             '今日涨幅：',
                             Text(
                               '${item['stockPercent']!}%',
-                              style: TextStyle(color: logic.getColor(double.parse(item['stockPercent']!))),
+                              style: TextStyle(color: logic.getColor(double.parse(item['stockPercent'] ?? ''))),
                             )),
                         BrnRichGridInfo(
                             '建仓以来：',
