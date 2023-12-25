@@ -1,13 +1,8 @@
-import 'dart:convert';
-
 import 'package:bruno/bruno.dart';
-import 'package:crash_box/common/Logger.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
-import 'package:getwidget/components/toast/gf_toast.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -33,10 +28,12 @@ class MyLogic extends GetxController {
   }
 
   checkUpdate() async {
-    final res = await dio.get("https://github.com/CupOfBread/Crash-Box/releases/download/updator/updator.json");
-    Map<String, dynamic> resData = jsonDecode(res.data);
-    state.latestAppVersion = resData['version'].toString();
-    if (state.latestAppVersion != state.appVersion) {
+    final res = await dio.get("/appInfo/version/latest");
+    Map<String, dynamic> resData = res.data;
+    state.latestAppVersion = resData['result']['appVersion']['version'].toString();
+    state.latestAppDownloadUrl = resData['result']['appVersion']['downloadUrl'].toString();
+    state.hasNewVersion = resData['result']['hasNewVersion'];
+    if (state.latestAppVersion != state.appVersion && state.hasNewVersion) {
       GFToast.showToast('发现新版本，请前往设置页面下载最新版以获得最佳体验！', Get.overlayContext!,
           toastPosition: GFToastPosition.BOTTOM,
           toastDuration: 6,
@@ -49,13 +46,13 @@ class MyLogic extends GetxController {
   }
 
   getUpdateButton() {
-    if (state.latestAppVersion != state.appVersion) {
+    if (state.latestAppVersion != state.appVersion && state.hasNewVersion) {
       return GetBuilder<MyLogic>(builder: (logic) {
         return Padding(
           padding: const EdgeInsetsDirectional.fromSTEB(12, 8, 12, 8),
           child: GFButton(
             onPressed: () async {
-              final Uri _url = Uri.parse('https://github.com/CupOfBread/Crash-Box/releases/download/latest/app-release_android.apk');
+              final Uri _url = Uri.parse(state.latestAppDownloadUrl);
               if (!await launchUrl(_url)) {
                 throw Exception('Could not launch $_url');
               }
