@@ -14,6 +14,7 @@ class PortfolioDetailState {
   late double clearanceIncome = 0.0;
   late double totalCost = 0.0;
   late double todayIncome = 0.0;
+  late bool isTrade = false;
   late List<PortfolioDetail> detailList = [];
   late List<Map<String, String>> stockList = [];
   List<Color> randomColors = [

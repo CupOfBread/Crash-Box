@@ -1,4 +1,4 @@
-import 'package:bruno/bruno.dart';
+import 'package:crash_box/components/portfolio_detail_comp/TradeNoticeBar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
@@ -44,6 +44,12 @@ class PortfolioDetailPage extends StatelessWidget {
                   shrinkWrap: true,
                   children: [
                     GetBuilder<PortfolioDetailLogic>(builder: (logic) {
+                      return TradeNoticeBar(
+                        isTrade: state.isTrade,
+                      );
+                    }),
+                    const SizedBox(height: 8),
+                    GetBuilder<PortfolioDetailLogic>(builder: (logic) {
                       return OverviewCard(
                           // 年化收益率=(投资内收益/本金)/(投资天数/365)*100%
                           // 投资内收益=市值-本金+已清仓股票
@@ -55,13 +61,13 @@ class PortfolioDetailPage extends StatelessWidget {
                           marketValue: state.portfolio.marketValue ?? 0,
                           durationDays: state.portfolio.updateTime!.difference(state.portfolio.createTime!).inDays);
                     }),
-                    Container(height: 8),
+                    const SizedBox(height: 8),
                     GetBuilder<PortfolioDetailLogic>(builder: (logic) {
                       return PositionCard(
                         graphData: state.graphData,
                       );
                     }),
-                    Container(height: 8),
+                    const SizedBox(height: 8),
                     GetBuilder<PortfolioDetailLogic>(builder: (logic) {
                       return FundDetailCard(
                         fund: state.portfolio.fund ?? 0,
@@ -71,7 +77,7 @@ class PortfolioDetailPage extends StatelessWidget {
                         todayIncome: state.todayIncome,
                       );
                     }),
-                    Container(height: 8),
+                    const SizedBox(height: 8),
                     GetBuilder<PortfolioDetailLogic>(builder: (logic) {
                       return CharacteristicCard(
                         volatility: state.characteristic.volatility ?? 0,
@@ -80,7 +86,7 @@ class PortfolioDetailPage extends StatelessWidget {
                         incomeRate: (state.portfolio.marketValue! - state.portfolio.fund! + state.clearanceIncome) / state.portfolio.fund! * 100,
                       );
                     }),
-                    Container(height: 8),
+                    const SizedBox(height: 8),
                   ],
                 ))));
   }

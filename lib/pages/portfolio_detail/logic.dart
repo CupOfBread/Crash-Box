@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bruno/bruno.dart';
-import 'package:crash_box/common/Logger.dart';
 import 'package:crash_box/models/Portfolio.dart';
 import 'package:crash_box/models/PortfolioCharacteristic.dart';
 import 'package:crash_box/models/PortfolioDetail.dart';
@@ -125,6 +124,8 @@ class PortfolioDetailLogic extends GetxController {
         }
       }
 
+      state.isTrade = stockCurrent['is_trade'];
+
       // 累加当日浮动收益
       state.todayIncome += (stockCurrent['chg'] * detail.amount);
 
@@ -145,7 +146,6 @@ class PortfolioDetailLogic extends GetxController {
 
   ///生成基金信息列表
   void generateFundsListData() {
-    LogI('generateFundsListData');
     for (var detail in state.detailList) {
       // 跳过已经清仓的股票&基金
       if (detail.over == 1) continue;
