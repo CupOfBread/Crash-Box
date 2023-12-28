@@ -15,9 +15,23 @@ class PortfolioDetailPage extends StatelessWidget {
 
   final logic = Get.put(PortfolioDetailLogic());
   final state = Get.find<PortfolioDetailLogic>().state;
+  late ScrollController _scrollController;
+
+  void scrollToTop() {
+    _scrollController.animateTo(0, duration: const Duration(milliseconds: 600), curve: Curves.linear);
+  }
 
   @override
   Widget build(BuildContext context) {
+    _scrollController = ScrollController()
+      ..addListener(() {
+        if (_scrollController.offset >= 200) {
+          logic.showBackToTopButton(true);
+        } else {
+          logic.showBackToTopButton(false);
+        }
+      });
+
     return Scaffold(
         appBar: GFAppBar(
           backgroundColor: GFColors.DARK,
@@ -37,11 +51,22 @@ class PortfolioDetailPage extends StatelessWidget {
             )
           ],
         ),
+        floatingActionButton: GetBuilder<PortfolioDetailLogic>(builder: (logic) {
+          return state.showBackToTopButton
+              ? GFIconButton(
+                  onPressed: scrollToTop,
+                  icon: const Icon(Icons.arrow_upward),
+                  shape: GFIconButtonShape.circle,
+                  color: Colors.black26,
+                )
+              : const SizedBox();
+        }),
         body: SafeArea(
             child: Container(
                 padding: const EdgeInsets.all(8),
                 child: ListView(
                   shrinkWrap: true,
+                  controller: _scrollController,
                   children: [
                     GetBuilder<PortfolioDetailLogic>(builder: (logic) {
                       return TradeNoticeBar(

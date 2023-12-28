@@ -43,6 +43,12 @@ class PortfolioDetailLogic extends GetxController {
     update();
   }
 
+  // 展示返回到顶部按钮
+  void showBackToTopButton(bool show) {
+    state.showBackToTopButton = show;
+    update();
+  }
+
   getColor(double num) {
     if (num == 0) {
       return Colors.black;
@@ -99,7 +105,7 @@ class PortfolioDetailLogic extends GetxController {
     }
 
     //组装生成基金数据
-    generateFundsListData();
+    await generateFundsListData();
 
     //排序（从大到小）
     state.stockList.sort((a, b) =>
@@ -145,16 +151,19 @@ class PortfolioDetailLogic extends GetxController {
   }
 
   ///生成基金信息列表
-  void generateFundsListData() {
+  Future<void> generateFundsListData() async {
     for (var detail in state.detailList) {
       // 跳过已经清仓的股票&基金
       if (detail.over == 1) continue;
       if (detail.type == 'stock') continue;
 
+      String baseUrl = 'https://danjuanfunds.com/djapi/fund/';
+      final result = await dio.get(baseUrl + detail.code!);
+
       Map<String, String> item = {};
       item["stockName"] = '${detail.name}(${detail.location}${detail.code})';
       item["costUnitPrice"] = detail.unitPrice!.toStringAsFixed(3);
-      item["currentUnitPrice"] = '0';
+      item["currentUnitPrice"] = result.data['data']['fund_derived']['unit_nav'];
       item["stockPercent"] = '0.00';
       item["amount"] = detail.amount!.toString();
       item["percent"] = ((detail.unitPrice! * detail.amount!.toDouble()) / state.totalCost * 100.0).toStringAsFixed(2);

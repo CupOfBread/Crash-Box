@@ -6,6 +6,7 @@ import '../../models/PortfolioCharacteristic.dart';
 import '../../models/PortfolioDetail.dart';
 
 class PortfolioDetailState {
+  bool showBackToTopButton = false;
   late String id;
   late String name;
   late Portfolio portfolio = Portfolio(updateTime: DateTime.now(), createTime: DateTime.now(), fund: 0, marketValue: 0, marketValueYes: 0);
