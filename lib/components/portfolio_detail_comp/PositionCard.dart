@@ -15,7 +15,7 @@ class PositionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BrnShadowCard(
-      padding: const EdgeInsetsDirectional.fromSTEB(8, 8, 8, 12),
+      padding: const EdgeInsetsDirectional.fromSTEB(8, 0, 8, 12),
       color: Colors.white,
       child: Column(
         children: [

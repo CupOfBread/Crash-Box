@@ -7,6 +7,7 @@ import 'package:date_format/date_format.dart';
 import '../../components/portfolio_detail_comp/CharacteristicCard.dart';
 import '../../components/portfolio_detail_comp/FundDetailCard.dart';
 import '../../components/portfolio_detail_comp/OverviewCard.dart';
+import '../../components/portfolio_detail_comp/PortfolioInfo.dart';
 import '../../components/portfolio_detail_comp/PositionCard.dart';
 import 'logic.dart';
 
@@ -104,6 +105,14 @@ class PortfolioDetailPage extends StatelessWidget {
                     }),
                     const SizedBox(height: 8),
                     GetBuilder<PortfolioDetailLogic>(builder: (logic) {
+                      return PortfolioInfo(
+                        target: state.portfolio.target ?? '',
+                        strategy: state.portfolio.strategy ?? '',
+                        tag: state.portfolio.tag ?? '',
+                      );
+                    }),
+                    const SizedBox(height: 8),
+                    GetBuilder<PortfolioDetailLogic>(builder: (logic) {
                       return CharacteristicCard(
                         volatility: state.characteristic.volatility ?? 0,
                         maxDrawDown: state.characteristic.maxDrawdown ?? 0,
@@ -111,7 +120,7 @@ class PortfolioDetailPage extends StatelessWidget {
                         incomeRate: (state.portfolio.marketValue! - state.portfolio.fund! + state.clearanceIncome) / state.portfolio.fund! * 100,
                       );
                     }),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 8)
                   ],
                 ))));
   }
