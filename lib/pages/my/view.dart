@@ -1,8 +1,8 @@
+import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/colors/gf_color.dart';
 import 'package:getwidget/components/appbar/gf_appbar.dart';
-import 'package:getwidget/components/list_tile/gf_list_tile.dart';
 
 import 'logic.dart';
 
@@ -21,14 +21,49 @@ class MyPage extends StatelessWidget {
         title: const Text("设置"),
       ),
       body: SafeArea(
-        child: ListView(
-          children: [
-            const GFListTile(titleText: 'Crash Box', subTitleText: '更清晰地展示实盘组合。', color: Colors.white),
-            GetBuilder<MyLogic>(builder: (logic) {
-              return GFListTile(titleText: '当前版本', subTitleText: state.appVersion, color: Colors.white);
-            }),
-            logic.getUpdateButton(),
-          ],
+        child: Container(
+          padding: const EdgeInsets.all(8),
+          child: ListView(
+            children: [
+              BrnShadowCard(
+                padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 12),
+                color: Colors.white,
+                child: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BrnCommonCardTitle(
+                      title: 'CRASH BOX',
+                    ),
+                    BrnExpandableText(
+                      text: '更清晰地展示实盘组合。',
+                      maxLines: 2,
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(height: 8),
+              GetBuilder<MyLogic>(builder: (logic) {
+                return BrnShadowCard(
+                  padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 12),
+                  color: Colors.white,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      BrnCommonCardTitle(
+                        title: '当前版本',
+                        accessoryText: state.appVersion,
+                      ),
+                      BrnExpandableText(
+                        text: state.latestAppVersionRemark,
+                        maxLines: 2,
+                      )
+                    ],
+                  ),
+                );
+              }),
+              logic.getUpdateButton(),
+            ],
+          ),
         ),
       ),
     );

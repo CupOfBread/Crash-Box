@@ -31,6 +31,7 @@ class MyLogic extends GetxController {
     final res = await dio.get("/appInfo/version/latest");
     Map<String, dynamic> resData = res.data;
     state.latestAppVersion = resData['result']['appVersion']['version'].toString();
+    state.latestAppVersionRemark = resData['result']['appVersion']['remark'].toString();
     state.latestAppDownloadUrl = resData['result']['appVersion']['downloadUrl'].toString();
     state.hasNewVersion = resData['result']['hasNewVersion'];
     if (state.latestAppVersion != state.appVersion && state.hasNewVersion) {
