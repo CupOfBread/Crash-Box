@@ -25,6 +25,7 @@ class BottomBarComponent extends StatelessWidget {
             logic.changeNavIndex(index);
           },
           items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.dashboard), label: "仪表盘"),
             BottomNavigationBarItem(icon: Icon(Icons.savings), label: "组合"),
             BottomNavigationBarItem(icon: Icon(Icons.settings), label: "设置"),
           ]);

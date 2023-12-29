@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 
 import '../../components/bottom_bar/logic.dart';
 import '../../components/bottom_bar/view.dart';
-import '../my/view.dart';
-import '../portfolio/view.dart';
 import 'logic.dart';
 
 class HomePage extends StatelessWidget {
@@ -16,7 +14,7 @@ class HomePage extends StatelessWidget {
     final state = Get.find<HomeLogic>().state;
     final bottomBarLogic = Get.put(BottomBarLogic());
 
-    List<Widget> pages = [PortfolioPage(), MyPage()];
+
 
     return Scaffold(
       body: SizedBox(
@@ -25,7 +23,7 @@ class HomePage extends StatelessWidget {
         child: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: bottomBarLogic.pageController,
-          children: pages,
+          children: state.pages,
         ),
       ),
       bottomNavigationBar: const BottomBarComponent(),

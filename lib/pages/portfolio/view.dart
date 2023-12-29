@@ -1,8 +1,6 @@
 import 'package:crash_box/components/portfolio_list/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/colors/gf_color.dart';
-import 'package:getwidget/components/appbar/gf_appbar.dart';
 import 'package:getwidget/getwidget.dart';
 
 import '../../components/portfolio_list/logic.dart';
@@ -20,12 +18,12 @@ class PortfolioPage extends StatelessWidget {
       appBar: GFAppBar(
         backgroundColor: GFColors.DARK,
         brightness: Brightness.dark,
-        title: Text("Crash Box"),
+        title: Text("组合"),
         actions: [
           GFIconButton(
             padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 8),
             icon: const Icon(
-              Icons.add_chart,
+              Icons.sync,
               color: Colors.white,
             ),
             type: GFButtonType.transparent,

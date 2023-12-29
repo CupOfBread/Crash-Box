@@ -5,4 +5,5 @@ abstract class AppRoutes {
   static const Portfolio = '/portfolio';
   static const PortfolioDetail = '/portfolio/detail';
   static const My = '/my';
+  static const Dashboard = '/dashboard';
 }

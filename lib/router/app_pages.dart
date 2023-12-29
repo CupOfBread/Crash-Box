@@ -1,3 +1,4 @@
+import 'package:crash_box/pages/dashboard/view.dart';
 import 'package:get/get.dart';
 
 import '../pages/home/view.dart';
@@ -26,6 +27,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.My,
       page: () => MyPage(),
+    ),
+    GetPage(
+      name: AppRoutes.Dashboard,
+      page: () => DashboardPage(),
     ),
   ];
 }

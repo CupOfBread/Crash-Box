@@ -42,7 +42,7 @@ class PortfolioDetailPage extends StatelessWidget {
             GFIconButton(
               padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 8),
               icon: const Icon(
-                Icons.handyman,
+                Icons.sync,
                 color: Colors.white,
               ),
               type: GFButtonType.transparent,

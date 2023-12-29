@@ -51,13 +51,17 @@ class _PortfolioListComponent extends State<PortfolioListComponent> with Automat
                               children: [
                                 Row(
                                   children: [
-                                    Text(
-                                      state.portfolioList[index].portfolioName ?? '-',
-                                      style: const TextStyle(
-                                        color: Color(0xFF171717),
-                                        fontSize: 16,
-                                        letterSpacing: 1,
-                                        fontWeight: FontWeight.w600,
+                                    ConstrainedBox(
+                                      constraints: const BoxConstraints(maxWidth: 170),
+                                      child: Text(
+                                        state.portfolioList[index].portfolioName ?? '-',
+                                        overflow: TextOverflow.ellipsis,
+                                        style: const TextStyle(
+                                          color: Color(0xFF171717),
+                                          fontSize: 16,
+                                          letterSpacing: 1,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
                                     ),
                                     logic.getTags(state.portfolioList[index].tag ?? '-')
