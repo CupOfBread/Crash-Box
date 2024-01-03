@@ -73,7 +73,7 @@ class OverviewCard extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 width: (MediaQuery.sizeOf(context).width - 32) * 0.49,
                 height: 100,
                 child: Padding(
@@ -98,7 +98,7 @@ class OverviewCard extends StatelessWidget {
                           ),
                           Container(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
                               child: Text(
                                 '${dailyIncreaseRate.toStringAsFixed(2)}%',
                                 style: TextStyle(
@@ -124,7 +124,7 @@ class OverviewCard extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
                             child: Text(
                               marketValue.toStringAsFixed(2),
                               style: const TextStyle(

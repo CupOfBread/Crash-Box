@@ -33,16 +33,16 @@ class _PortfolioListComponent extends State<PortfolioListComponent> with Automat
                       "/portfolio/detail?id=${state.portfolioList[index].id}&portfolioName=${state.portfolioList[index].portfolioName}",
                     );
                   },
-                  child: Container(
+                  child: SizedBox(
                     height: 65,
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
+                          SizedBox(
                             width: MediaQuery.sizeOf(context).width * 0.6,
                             child: Column(
                               mainAxisSize: MainAxisSize.max,

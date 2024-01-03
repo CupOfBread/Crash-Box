@@ -14,7 +14,7 @@ class AppPages {
   static final routes = [
     GetPage(
       name: AppRoutes.Home,
-      page: () => HomePage(),
+      page: () => const HomePage(),
     ),
     GetPage(
       name: AppRoutes.Portfolio,

@@ -12,10 +12,10 @@ Future<void> setupServiceLocator() async {
 }
 
 void initDio() {
-  final GLOBAL_VALUE = GlobalValue();
+  final globalValue = GlobalValue();
   final dio = Dio();
 
-  dio.options.baseUrl = GLOBAL_VALUE.serverUrl;
+  dio.options.baseUrl = globalValue.serverUrl;
   dio.options.connectTimeout = const Duration(seconds: 10);
   dio.options.receiveTimeout = const Duration(seconds: 3);
   dio.interceptors.add(

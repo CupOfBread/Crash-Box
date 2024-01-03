@@ -12,7 +12,7 @@ class PortfolioInfo extends StatelessWidget {
     List<Widget> list = [];
 
     if (tags == '') {
-      return Row();
+      return const Row();
     }
 
     var tagList = tags.split(',');

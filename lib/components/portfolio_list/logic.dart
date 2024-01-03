@@ -50,7 +50,7 @@ class PortfolioListLogic extends GetxController {
 
   getTags(String tags) {
     if (tags == '') {
-      return Row();
+      return const Row();
     }
     return Padding(
       padding: const EdgeInsets.only(left: 4),

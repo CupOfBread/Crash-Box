@@ -53,9 +53,9 @@ class MyLogic extends GetxController {
           padding: const EdgeInsetsDirectional.fromSTEB(12, 8, 12, 8),
           child: GFButton(
             onPressed: () async {
-              final Uri _url = Uri.parse(state.latestAppDownloadUrl);
-              if (!await launchUrl(_url)) {
-                throw Exception('Could not launch $_url');
+              final Uri url = Uri.parse(state.latestAppDownloadUrl);
+              if (!await launchUrl(url)) {
+                throw Exception('Could not launch $url');
               }
             },
             text: "获取最新版本 ${state.latestAppVersion}",
