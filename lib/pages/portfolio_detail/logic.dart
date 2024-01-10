@@ -70,15 +70,17 @@ class PortfolioDetailLogic extends GetxController {
     state.todayIncome = 0.0;
 
     // 获取后端数据
-    if (response.data['result']['portfolio'] != null) {
-      state.portfolio = Portfolio.fromJson(response.data['result']['portfolio']);
+    if (response.data['data']['portfolio'] != null) {
+      state.portfolio = Portfolio.fromJson(response.data['data']['portfolio']);
     }
-    if (response.data['result']['characteristic'] != null) {
-      state.characteristic = PortfolioCharacteristic.fromJson(response.data['result']['characteristic']);
+    if (response.data['data']['characteristic'] != null) {
+      state.characteristic = PortfolioCharacteristic.fromJson(response.data['data']['characteristic']);
     }
-    if (response.data['result']['detail'] != null) {
-      state.detailList = List<PortfolioDetail>.from(response.data['result']['detail'].map((e) => PortfolioDetail.fromJson(e)).toList());
+    if (response.data['data']['detail'] != null) {
+      state.detailList = List<PortfolioDetail>.from(response.data['data']['detail'].map((e) => PortfolioDetail.fromJson(e)).toList());
     }
+
+    state.graphData.add(BrnDoughnutDataItem(value: state.portfolio.cash, title: '现金',color: state.randomColors[state.graphData.length]));
 
     for (var detail in state.detailList) {
       // 累加已清仓股票&基金收益

@@ -22,7 +22,7 @@ class PortfolioListLogic extends GetxController {
   void getPortfolioList() async {
     final response = await dio.get("portfolio/queryPage", queryParameters: {'current': state.current, 'size': state.size});
 
-    var list = response.data['result']['records'];
+    var list = response.data['data']['records'];
     List<Portfolio> portfolioList = List<Portfolio>.from(list.map((e) => Portfolio.fromJson(e)).toList());
 
     state.portfolioList = portfolioList;

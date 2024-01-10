@@ -19,11 +19,11 @@ class PortfolioDetailState {
   late List<PortfolioDetail> detailList = [];
   late List<Map<String, String>> stockList = [];
   List<Color> randomColors = [
+    Colors.brown,
     Colors.redAccent,
     Colors.blue,
     Colors.orange,
     Colors.purple,
-    Colors.brown,
     Colors.deepPurple,
     Colors.teal,
     Colors.limeAccent,

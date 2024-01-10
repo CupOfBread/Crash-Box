@@ -30,10 +30,10 @@ class MyLogic extends GetxController {
   checkUpdate() async {
     final res = await dio.get("/appInfo/version/latest");
     Map<String, dynamic> resData = res.data;
-    state.latestAppVersion = resData['result']['appVersion']['version'].toString();
-    state.latestAppVersionRemark = resData['result']['appVersion']['remark'].toString();
-    state.latestAppDownloadUrl = resData['result']['appVersion']['downloadUrl'].toString();
-    state.hasNewVersion = resData['result']['hasNewVersion'];
+    state.latestAppVersion = resData['data']['appVersion']['version'].toString();
+    state.latestAppVersionRemark = resData['data']['appVersion']['remark'].toString();
+    state.latestAppDownloadUrl = resData['data']['appVersion']['downloadUrl'].toString();
+    state.hasNewVersion = resData['data']['hasNewVersion'];
     if (state.latestAppVersion != state.appVersion && state.hasNewVersion) {
       GFToast.showToast('发现新版本，请前往设置页面下载最新版以获得最佳体验！', Get.overlayContext!,
           toastPosition: GFToastPosition.BOTTOM,
