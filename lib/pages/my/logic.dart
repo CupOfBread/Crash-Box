@@ -28,7 +28,7 @@ class MyLogic extends GetxController {
   }
 
   checkUpdate() async {
-    final res = await dio.get("/appInfo/version/latest");
+    final res = await dio.get("/appInfo/version/latest", queryParameters: {'version': state.appVersion});
     Map<String, dynamic> resData = res.data;
     state.latestAppVersion = resData['data']['appVersion']['version'].toString();
     state.latestAppVersionRemark = resData['data']['appVersion']['remark'].toString();
