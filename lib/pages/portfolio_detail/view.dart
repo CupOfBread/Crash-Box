@@ -57,6 +57,10 @@ class PortfolioDetailPage extends StatelessWidget {
                     child: Text("已清仓项目"),
                   ),
                   const PopupMenuItem(
+                    value: "historyDigit",
+                    child: Text("历史净值"),
+                  ),
+                  const PopupMenuItem(
                     value: "instructions",
                     child: Text("说明"),
                   ),
@@ -126,6 +130,7 @@ class PortfolioDetailPage extends StatelessWidget {
                         target: state.portfolio.target ?? '',
                         strategy: state.portfolio.strategy ?? '',
                         tag: state.portfolio.tag ?? '',
+                        portfolio: state.portfolio,
                       );
                     }),
                     const SizedBox(height: 8),

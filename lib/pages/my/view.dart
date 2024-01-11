@@ -42,6 +42,24 @@ class MyPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
+              BrnShadowCard(
+                padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 12),
+                color: Colors.white,
+                child: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BrnCommonCardTitle(
+                      title: '数据源',
+                    ),
+                    BrnExpandableText(
+                      text: '- 雪球  Stock.realtime.quotec.json V5\n'
+                          '- 雪球基金  Djapi.fund',
+                      maxLines: 2,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 8),
               GetBuilder<MyLogic>(builder: (logic) {
                 return BrnShadowCard(
                   padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 12),

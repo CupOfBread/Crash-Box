@@ -45,6 +45,10 @@ class PortfolioDetailLogic extends GetxController {
       refreshData();
       update();
     }
+    if ("clearance" == option) {}
+    if ("instructions" == option) {
+      Get.toNamed("/portfolio/instruction");
+    }
   }
 
   // 展示返回到顶部按钮
@@ -101,6 +105,7 @@ class PortfolioDetailLogic extends GetxController {
       // 计算总成本
       state.totalCost += detail.unitPrice! * detail.amount!;
     }
+    state.totalCost += state.portfolio.cash;
 
     // 组装查询股票实盘字符串
     var stockQueryStr = getStockQueryStr();

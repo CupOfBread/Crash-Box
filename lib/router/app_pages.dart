@@ -1,4 +1,5 @@
 import 'package:crash_box/pages/dashboard/view.dart';
+import 'package:crash_box/pages/portfolio_instruction/view.dart';
 import 'package:get/get.dart';
 
 import '../pages/home/view.dart';
@@ -6,30 +7,32 @@ import '../pages/my/view.dart';
 import '../pages/portfolio/view.dart';
 import '../pages/portfolio_detail/view.dart';
 
-part 'app_routes.dart';
-
 class AppPages {
-  static const INITIAL = AppRoutes.Home;
+  static const INITIAL = '/home';
 
   static final routes = [
     GetPage(
-      name: AppRoutes.Home,
+      name: '/home',
       page: () => const HomePage(),
     ),
     GetPage(
-      name: AppRoutes.Portfolio,
+      name: '/portfolio',
       page: () => PortfolioPage(),
     ),
     GetPage(
-      name: AppRoutes.PortfolioDetail,
+      name: '/portfolio/detail',
       page: () => PortfolioDetailPage(),
     ),
     GetPage(
-      name: AppRoutes.My,
+      name: '/portfolio/instruction',
+      page: () => PortfolioInstructionPage(),
+    ),
+    GetPage(
+      name: '/my',
       page: () => MyPage(),
     ),
     GetPage(
-      name: AppRoutes.Dashboard,
+      name: '/dashboard',
       page: () => DashboardPage(),
     ),
   ];
