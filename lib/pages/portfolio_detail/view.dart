@@ -1,14 +1,15 @@
-import 'package:crash_box/components/portfolio_detail_comp/TradeNoticeBar.dart';
+import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:date_format/date_format.dart';
 
-import '../../components/portfolio_detail_comp/CharacteristicCard.dart';
-import '../../components/portfolio_detail_comp/FundDetailCard.dart';
-import '../../components/portfolio_detail_comp/OverviewCard.dart';
-import '../../components/portfolio_detail_comp/PortfolioInfo.dart';
-import '../../components/portfolio_detail_comp/PositionCard.dart';
+import 'package:crash_box/components/portfolio_detail_comp/CharacteristicCard.dart';
+import 'package:crash_box/components/portfolio_detail_comp/FundDetailCard.dart';
+import 'package:crash_box/components/portfolio_detail_comp/OverviewCard.dart';
+import 'package:crash_box/components/portfolio_detail_comp/PortfolioInfo.dart';
+import 'package:crash_box/components/portfolio_detail_comp/TradeNoticeBar.dart';
+import 'package:crash_box/components/portfolio_detail_comp/PositionCard.dart';
 import 'logic.dart';
 
 class PortfolioDetailPage extends StatelessWidget {
@@ -39,15 +40,31 @@ class PortfolioDetailPage extends StatelessWidget {
           brightness: Brightness.dark,
           title: Text(state.name),
           actions: [
-            GFIconButton(
+            PopupMenuButton(
               padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 8),
               icon: const Icon(
-                Icons.sync,
+                Icons.menu,
                 color: Colors.white,
               ),
-              type: GFButtonType.transparent,
-              onPressed: () {
-                logic.test();
+              itemBuilder: (BuildContext context) {
+                return [
+                  const PopupMenuItem(
+                    value: "refresh",
+                    child: Text("刷新"),
+                  ),
+                  const PopupMenuItem(
+                    value: "clearance",
+                    child: Text("已清仓项目"),
+                  ),
+                  const PopupMenuItem(
+                    value: "instructions",
+                    child: Text("说明"),
+                  ),
+                ];
+              },
+              color: Colors.white,
+              onSelected: (String option) {
+                logic.doAction(option);
               },
             )
           ],
