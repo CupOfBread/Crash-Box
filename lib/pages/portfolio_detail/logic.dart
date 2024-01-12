@@ -45,7 +45,12 @@ class PortfolioDetailLogic extends GetxController {
       refreshData();
       update();
     }
-    if ("clearance" == option) {}
+    if ("clearance" == option) {
+      BrnToast.show("暂未开发，敬请期待！", Get.overlayContext!);
+    }
+    if ("historyDigit" == option) {
+      BrnToast.show("暂未开发，敬请期待！", Get.overlayContext!);
+    }
     if ("instructions" == option) {
       Get.toNamed("/portfolio/instruction");
     }

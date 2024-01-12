@@ -73,7 +73,7 @@ class MyPage extends StatelessWidget {
                       ),
                       BrnExpandableText(
                         text: state.latestAppVersionRemark,
-                        maxLines: 2,
+                        maxLines: 3,
                       )
                     ],
                   ),

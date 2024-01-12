@@ -2,8 +2,7 @@ import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 
 class CharacteristicCard extends StatelessWidget {
-  const CharacteristicCard(
-      {super.key, required this.volatility, required this.maxDrawDown, required this.sharpeRatio, required this.incomeRate});
+  const CharacteristicCard({super.key, required this.volatility, required this.maxDrawDown, required this.sharpeRatio, required this.incomeRate});
 
   // 波动率
   final double volatility;
@@ -26,6 +25,7 @@ class CharacteristicCard extends StatelessWidget {
           children: [
             const BrnCommonCardTitle(
               title: '特色数据',
+              subTitleWidget: Text("(暂未启用)"),
             ),
             BrnEnhanceNumberCard(
               rowCount: 2,

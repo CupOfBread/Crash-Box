@@ -1,3 +1,4 @@
+import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/colors/gf_color.dart';
@@ -24,16 +25,175 @@ class DashboardPage extends StatelessWidget {
           GFIconButton(
             padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 8),
             icon: const Icon(
-              Icons.add_chart,
+              Icons.sync,
               color: Colors.white,
             ),
             type: GFButtonType.transparent,
-            onPressed: () {},
+            onPressed: () {
+              logic.getStockIndexData();
+            },
           )
         ],
       ),
       body: SafeArea(
-        child: Text('DASHBOARD'),
+        child: Container(
+          padding: const EdgeInsets.all(8),
+          child: ListView(
+            children: [
+              BrnShadowCard(
+                padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 12),
+                color: Colors.white,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const BrnCommonCardTitle(
+                      title: 'A股',
+                    ),
+                    GetBuilder<DashboardLogic>(builder: (logic) {
+                      return GridView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 8,
+                            mainAxisSpacing: 4,
+                            childAspectRatio: 1.84,
+                          ),
+                          itemCount: state.CN_StockIndex.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                                decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [logic.getBgColor(state.CN_StockIndex[index].quote!.chg!), Colors.white]),
+                                    borderRadius: BorderRadius.circular(8)),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(state.CN_StockIndex[index].quote!.name!, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
+                                    Text(state.CN_StockIndex[index].quote!.current.toString(),
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w800,
+                                            color: logic.getTextColor(state.CN_StockIndex[index].quote!.percent!))),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(state.CN_StockIndex[index].quote!.chg.toString(),
+                                            style: TextStyle(
+                                                color: logic.getTextColor(state.CN_StockIndex[index].quote!.percent!), fontWeight: FontWeight.w600)),
+                                        SizedBox(width: 6),
+                                        Text(state.CN_StockIndex[index].quote!.percent.toString(),
+                                            style: TextStyle(
+                                                color: logic.getTextColor(state.CN_StockIndex[index].quote!.percent!), fontWeight: FontWeight.w600))
+                                      ],
+                                    )
+                                  ],
+                                ));
+                          });
+                    }),
+                    const BrnCommonCardTitle(
+                      title: '港股指数',
+                    ),
+                    GetBuilder<DashboardLogic>(builder: (logic) {
+                      return GridView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 8,
+                            mainAxisSpacing: 4,
+                            childAspectRatio: 1.84,
+                          ),
+                          itemCount: state.HK_StockIndex.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                                decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [logic.getBgColor(state.HK_StockIndex[index].quote!.chg!), Colors.white]),
+                                    borderRadius: BorderRadius.circular(8)),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(state.HK_StockIndex[index].quote!.name!, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
+                                    Text(state.HK_StockIndex[index].quote!.current.toString(),
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w800,
+                                            color: logic.getTextColor(state.HK_StockIndex[index].quote!.percent!))),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(state.HK_StockIndex[index].quote!.chg.toString(),
+                                            style: TextStyle(
+                                                color: logic.getTextColor(state.HK_StockIndex[index].quote!.percent!), fontWeight: FontWeight.w600)),
+                                        SizedBox(width: 6),
+                                        Text(state.HK_StockIndex[index].quote!.percent.toString(),
+                                            style: TextStyle(
+                                                color: logic.getTextColor(state.HK_StockIndex[index].quote!.percent!), fontWeight: FontWeight.w600))
+                                      ],
+                                    )
+                                  ],
+                                ));
+                          });
+                    }),
+                    const BrnCommonCardTitle(
+                      title: '美股指数',
+                    ),
+                    GetBuilder<DashboardLogic>(builder: (logic) {
+                      return GridView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 8,
+                            mainAxisSpacing: 4,
+                            childAspectRatio: 1.84,
+                          ),
+                          itemCount: state.US_StockIndex.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                                decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [logic.getBgColor(state.US_StockIndex[index].quote!.percent!), Colors.white]),
+                                    borderRadius: BorderRadius.circular(8)),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(state.US_StockIndex[index].quote!.name!, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
+                                    Text(state.US_StockIndex[index].quote!.current.toString(),
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w800,
+                                            color: logic.getTextColor(state.US_StockIndex[index].quote!.percent!))),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(state.US_StockIndex[index].quote!.chg.toString(),
+                                            style: TextStyle(
+                                                color: logic.getTextColor(state.US_StockIndex[index].quote!.percent!), fontWeight: FontWeight.w600)),
+                                        SizedBox(width: 6),
+                                        Text(state.US_StockIndex[index].quote!.percent.toString(),
+                                            style: TextStyle(
+                                                color: logic.getTextColor(state.US_StockIndex[index].quote!.percent!), fontWeight: FontWeight.w600))
+                                      ],
+                                    )
+                                  ],
+                                ));
+                          });
+                    }),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 8),
+            ],
+          ),
+        ),
       ),
     );
   }
