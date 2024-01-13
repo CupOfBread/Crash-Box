@@ -26,7 +26,7 @@ class PortfolioListLogic extends GetxController {
     List<Portfolio> portfolioList = List<Portfolio>.from(list.map((e) => Portfolio.fromJson(e)).toList());
 
     state.portfolioList = portfolioList;
-    BrnToast.show("获取组合列表成功", Get.overlayContext!);
+    BrnToast.show("组合列表刷新成功", Get.overlayContext!);
     update();
   }
 

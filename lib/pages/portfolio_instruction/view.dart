@@ -18,7 +18,7 @@ class PortfolioInstructionPage extends StatelessWidget {
         appBar: GFAppBar(
           backgroundColor: GFColors.DARK,
           brightness: Brightness.dark,
-          title: const Text("说明"),
+          title: const Text("组合说明"),
         ),
         body: SafeArea(
             child: Container(
@@ -35,7 +35,13 @@ class PortfolioInstructionPage extends StatelessWidget {
                             title: '组合归档&更新时间',
                           ),
                           Text(
-                            '工作日17:00',
+                            '- 工作日17:00',
+                          ),
+                          BrnCommonCardTitle(
+                            title: '组合详情页',
+                          ),
+                          Text(
+                            '- 组合详情页数据每一分钟自动更新一次',
                           ),
                           BrnCommonCardTitle(
                             title: '年化收益率',

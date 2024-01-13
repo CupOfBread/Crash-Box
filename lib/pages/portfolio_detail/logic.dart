@@ -126,7 +126,7 @@ class PortfolioDetailLogic extends GetxController {
     //排序（从大到小）
     state.stockList.sort((a, b) =>
         (double.parse(b['amount']!) * double.parse(b['costUnitPrice']!)).compareTo(double.parse(a['amount']!) * double.parse(a['costUnitPrice']!)));
-    BrnToast.show("刷新实盘数据成功", Get.overlayContext!);
+    BrnToast.show("数据刷新成功", Get.overlayContext!);
   }
 
   /// 生成股票信息列表

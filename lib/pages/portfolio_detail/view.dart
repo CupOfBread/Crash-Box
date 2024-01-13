@@ -62,7 +62,7 @@ class PortfolioDetailPage extends StatelessWidget {
                   ),
                   const PopupMenuItem(
                     value: "instructions",
-                    child: Text("说明"),
+                    child: Text("组合说明"),
                   ),
                 ];
               },

@@ -20,7 +20,7 @@ class DashboardPage extends StatelessWidget {
       appBar: GFAppBar(
         backgroundColor: GFColors.DARK,
         brightness: Brightness.dark,
-        title: Text("仪表盘"),
+        title: const Text("仪表盘"),
         actions: [
           GFIconButton(
             padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 8),
@@ -51,6 +51,7 @@ class DashboardPage extends StatelessWidget {
                     ),
                     GetBuilder<DashboardLogic>(builder: (logic) {
                       return GridView.builder(
+                          primary: false,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -94,10 +95,11 @@ class DashboardPage extends StatelessWidget {
                           });
                     }),
                     const BrnCommonCardTitle(
-                      title: '港股指数',
+                      title: '港股',
                     ),
                     GetBuilder<DashboardLogic>(builder: (logic) {
                       return GridView.builder(
+                          primary: false,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -141,10 +143,11 @@ class DashboardPage extends StatelessWidget {
                           });
                     }),
                     const BrnCommonCardTitle(
-                      title: '美股指数',
+                      title: '美股',
                     ),
                     GetBuilder<DashboardLogic>(builder: (logic) {
                       return GridView.builder(
+                          primary: false,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

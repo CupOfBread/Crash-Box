@@ -74,7 +74,7 @@ class PortfolioInfo extends StatelessWidget {
                     ? GFAvatar(
                         backgroundColor: Colors.white,
                         backgroundImage: NetworkImage(portfolio.user?.avatar),
-                        size: 18,
+                        size: 16,
                       )
                     : const SizedBox(),
                 Container(
