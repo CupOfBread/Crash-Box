@@ -57,6 +57,12 @@ class PortfolioInstructionPage extends StatelessWidget {
                             '市值 = 所有股票当日累计市值 + 现金',
                           ),
                           BrnCommonCardTitle(
+                            title: '总收益额',
+                          ),
+                          Text(
+                            '总收益额 = 当前市值 - 投入资金',
+                          ),
+                          BrnCommonCardTitle(
                             title: '特色数据',
                           ),
                           Text(

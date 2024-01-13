@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:getwidget/components/avatar/gf_avatar.dart';
 
 class PortfolioInfo extends StatelessWidget {
-  const PortfolioInfo({super.key, required this.target, required this.strategy, required this.tag, required this.portfolio});
+  const PortfolioInfo(
+      {super.key, required this.target, required this.strategy, required this.tag, required this.portfolio, required this.createTime});
 
   final String target;
   final String strategy;
   final String tag;
   final Portfolio portfolio;
+  final String createTime;
 
   getTags(String tags) {
     List<Widget> list = [];
@@ -66,6 +68,10 @@ class PortfolioInfo extends StatelessWidget {
             ),
             getTags(tag),
             const BrnCommonCardTitle(
+              title: '成立时间',
+            ),
+            Text(createTime),
+            const BrnCommonCardTitle(
               title: '创建人',
             ),
             Row(
@@ -82,7 +88,7 @@ class PortfolioInfo extends StatelessWidget {
                 ),
                 Text(portfolio.user?.nickName ?? "")
               ],
-            )
+            ),
           ],
         ));
   }

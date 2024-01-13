@@ -2,7 +2,8 @@ import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 
 class FundDetailCard extends StatelessWidget {
-  const FundDetailCard({super.key, required this.fund, required this.marketValue, required this.clearanceIncome, required this.cash, required this.todayIncome});
+  const FundDetailCard(
+      {super.key, required this.fund, required this.marketValue, required this.clearanceIncome, required this.cash, required this.todayIncome});
 
   // 投入资金额
   final double fund;
@@ -60,16 +61,16 @@ class FundDetailCard extends StatelessWidget {
                       style: TextStyle(color: getColor(clearanceIncome)),
                     )),
                 BrnRichGridInfo(
-                    '浮动收益：',
+                    '累计浮动：',
                     Text(
-                      (marketValue - fund).toStringAsFixed(2),
-                      style: TextStyle(color: getColor(marketValue - fund + clearanceIncome)),
+                      (marketValue - fund - clearanceIncome).toStringAsFixed(2),
+                      style: TextStyle(color: getColor(marketValue - fund - clearanceIncome)),
                     )),
                 BrnRichGridInfo(
                     '总收益额：',
                     Text(
-                      (marketValue - fund + clearanceIncome).toStringAsFixed(2),
-                      style: TextStyle(color: getColor(marketValue - fund + clearanceIncome)),
+                      (marketValue - fund).toStringAsFixed(2),
+                      style: TextStyle(color: getColor(marketValue - fund)),
                     )),
                 BrnRichGridInfo(
                     '总收益率：',

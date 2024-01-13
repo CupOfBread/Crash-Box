@@ -131,6 +131,7 @@ class PortfolioDetailPage extends StatelessWidget {
                         strategy: state.portfolio.strategy ?? '',
                         tag: state.portfolio.tag ?? '',
                         portfolio: state.portfolio,
+                        createTime: state.portfolio.createTime.toString().substring(0, 10),
                       );
                     }),
                     const SizedBox(height: 8),
