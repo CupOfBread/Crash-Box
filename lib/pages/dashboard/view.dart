@@ -85,7 +85,7 @@ class DashboardPage extends StatelessWidget {
                                             style: TextStyle(
                                                 color: logic.getTextColor(state.CN_StockIndex[index].quote!.percent!), fontWeight: FontWeight.w600)),
                                         SizedBox(width: 6),
-                                        Text(state.CN_StockIndex[index].quote!.percent.toString(),
+                                        Text("${state.CN_StockIndex[index].quote!.percent}%",
                                             style: TextStyle(
                                                 color: logic.getTextColor(state.CN_StockIndex[index].quote!.percent!), fontWeight: FontWeight.w600))
                                       ],
@@ -133,7 +133,7 @@ class DashboardPage extends StatelessWidget {
                                             style: TextStyle(
                                                 color: logic.getTextColor(state.HK_StockIndex[index].quote!.percent!), fontWeight: FontWeight.w600)),
                                         SizedBox(width: 6),
-                                        Text(state.HK_StockIndex[index].quote!.percent.toString(),
+                                        Text("${state.HK_StockIndex[index].quote!.percent}%",
                                             style: TextStyle(
                                                 color: logic.getTextColor(state.HK_StockIndex[index].quote!.percent!), fontWeight: FontWeight.w600))
                                       ],
@@ -181,7 +181,7 @@ class DashboardPage extends StatelessWidget {
                                             style: TextStyle(
                                                 color: logic.getTextColor(state.US_StockIndex[index].quote!.percent!), fontWeight: FontWeight.w600)),
                                         SizedBox(width: 6),
-                                        Text(state.US_StockIndex[index].quote!.percent.toString(),
+                                        Text("${state.US_StockIndex[index].quote!.percent}%",
                                             style: TextStyle(
                                                 color: logic.getTextColor(state.US_StockIndex[index].quote!.percent!), fontWeight: FontWeight.w600))
                                       ],
