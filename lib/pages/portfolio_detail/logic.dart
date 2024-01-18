@@ -93,7 +93,9 @@ class PortfolioDetailLogic extends GetxController {
       state.detailList = List<PortfolioDetail>.from(response.data['data']['detail'].map((e) => PortfolioDetail.fromJson(e)).toList());
     }
 
-    state.graphData.add(BrnDoughnutDataItem(value: state.portfolio.cash, title: '现金', color: state.randomColors[state.graphData.length]));
+    if (state.portfolio.cash > 1000) {
+      state.graphData.add(BrnDoughnutDataItem(value: state.portfolio.cash, title: '现金', color: state.randomColors[state.graphData.length]));
+    }
 
     for (var detail in state.detailList) {
       // 累加已清仓股票&基金收益
