@@ -81,12 +81,12 @@ class DashboardPage extends StatelessWidget {
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
-                                        Text(state.CN_StockIndex[index].quote!.chg.toString(),
+                                        Text("${state.CN_StockIndex[index].quote!.chg ?? 0}",
                                             style: TextStyle(
                                                 color: logic.getTextColor(state.CN_StockIndex[index].quote!.percent ?? 0),
                                                 fontWeight: FontWeight.w600)),
                                         const SizedBox(width: 6),
-                                        Text("${state.CN_StockIndex[index].quote!.percent}%",
+                                        Text("${state.CN_StockIndex[index].quote!.percent ?? 0}%",
                                             style: TextStyle(
                                                 color: logic.getTextColor(state.CN_StockIndex[index].quote!.percent ?? 0),
                                                 fontWeight: FontWeight.w600))
@@ -131,12 +131,12 @@ class DashboardPage extends StatelessWidget {
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
-                                        Text(state.HK_StockIndex[index].quote!.chg.toString(),
+                                        Text("${state.HK_StockIndex[index].quote!.chg ?? 0}",
                                             style: TextStyle(
                                                 color: logic.getTextColor(state.HK_StockIndex[index].quote!.percent ?? 0),
                                                 fontWeight: FontWeight.w600)),
                                         const SizedBox(width: 6),
-                                        Text("${state.HK_StockIndex[index].quote!.percent}%",
+                                        Text("${state.HK_StockIndex[index].quote!.percent ?? 0}%",
                                             style: TextStyle(
                                                 color: logic.getTextColor(state.HK_StockIndex[index].quote!.percent ?? 0),
                                                 fontWeight: FontWeight.w600))
@@ -181,7 +181,7 @@ class DashboardPage extends StatelessWidget {
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
-                                        Text(state.US_StockIndex[index].quote!.chg.toString(),
+                                        Text("${state.US_StockIndex[index].quote!.chg ?? 0}",
                                             style: TextStyle(
                                                 color: logic.getTextColor(state.US_StockIndex[index].quote!.percent ?? 0),
                                                 fontWeight: FontWeight.w600)),
