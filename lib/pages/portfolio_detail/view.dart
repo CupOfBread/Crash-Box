@@ -56,10 +56,10 @@ class PortfolioDetailPage extends StatelessWidget {
                     value: "clearance",
                     child: Text("已清仓项目"),
                   ),
-                  const PopupMenuItem(
-                    value: "historyDigit",
-                    child: Text("历史净值"),
-                  ),
+                  // const PopupMenuItem(
+                  //   value: "historyDigit",
+                  //   child: Text("历史净值"),
+                  // ),
                   const PopupMenuItem(
                     value: "instructions",
                     child: Text("组合说明"),

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../pages/home/view.dart';
 import '../pages/my/view.dart';
 import '../pages/portfolio/view.dart';
+import '../pages/portfolio_cleared/view.dart';
 import '../pages/portfolio_detail/view.dart';
 
 class AppPages {
@@ -26,6 +27,10 @@ class AppPages {
     GetPage(
       name: '/portfolio/instruction',
       page: () => PortfolioInstructionPage(),
+    ),
+    GetPage(
+      name: '/portfolio/cleared',
+      page: () => PortfolioClearedPage(),
     ),
     GetPage(
       name: '/my',

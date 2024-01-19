@@ -11,10 +11,11 @@ class PortfolioDetail {
   int? portfolioId;
   String? type;
   int? over;
-  dynamic overIncome;
+  double? overIncome;
   double? unitPrice;
   double? amount;
   DateTime? purchaseTime;
+  DateTime? sellTime;
   DateTime? updateTime;
   String? location;
 
@@ -29,6 +30,7 @@ class PortfolioDetail {
     this.unitPrice,
     this.amount,
     this.purchaseTime,
+    this.sellTime,
     this.updateTime,
     this.location,
   });
@@ -40,10 +42,11 @@ class PortfolioDetail {
         portfolioId: json["portfolioId"],
         type: json["type"],
         over: json["over"],
-        overIncome: json["overIncome"],
+        overIncome: json["overIncome"]?.toDouble(),
         unitPrice: json["unitPrice"]?.toDouble(),
         amount: json["amount"],
         purchaseTime: json["purchaseTime"] == null ? null : DateTime.parse(json["purchaseTime"]),
+        sellTime: json["sellTime"] == null ? null : DateTime.parse(json["sellTime"]),
         updateTime: json["updateTime"] == null ? null : DateTime.parse(json["updateTime"]),
         location: json["location"],
       );
@@ -59,6 +62,7 @@ class PortfolioDetail {
         "unitPrice": unitPrice,
         "amount": amount,
         "purchaseTime": purchaseTime?.toIso8601String(),
+        "sellTime": sellTime?.toIso8601String(),
         "updateTime": updateTime?.toIso8601String(),
         "location": location,
       };

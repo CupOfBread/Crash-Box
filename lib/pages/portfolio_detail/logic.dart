@@ -46,7 +46,7 @@ class PortfolioDetailLogic extends GetxController {
       update();
     }
     if ("clearance" == option) {
-      BrnToast.show("暂未开发，敬请期待！", Get.overlayContext!);
+      Get.toNamed("/portfolio/cleared?id=${state.portfolio.id!}");
     }
     if ("historyDigit" == option) {
       BrnToast.show("暂未开发，敬请期待！", Get.overlayContext!);
@@ -93,11 +93,10 @@ class PortfolioDetailLogic extends GetxController {
       state.detailList = List<PortfolioDetail>.from(response.data['data']['detail'].map((e) => PortfolioDetail.fromJson(e)).toList());
     }
 
-
     for (var detail in state.detailList) {
       // 累加已清仓股票&基金收益
       if (detail.over == 1) {
-        state.clearanceIncome += detail.overIncome;
+        state.clearanceIncome += detail.overIncome!;
         continue;
       }
 
