@@ -93,9 +93,6 @@ class PortfolioDetailLogic extends GetxController {
       state.detailList = List<PortfolioDetail>.from(response.data['data']['detail'].map((e) => PortfolioDetail.fromJson(e)).toList());
     }
 
-    if (state.portfolio.cash > 1000) {
-      state.graphData.add(BrnDoughnutDataItem(value: state.portfolio.cash, title: '现金', color: state.randomColors[state.graphData.length]));
-    }
 
     for (var detail in state.detailList) {
       // 累加已清仓股票&基金收益
@@ -113,6 +110,10 @@ class PortfolioDetailLogic extends GetxController {
       state.totalCost += detail.unitPrice! * detail.amount!;
     }
     state.totalCost += state.portfolio.cash;
+
+    if (state.portfolio.cash > 1000) {
+      state.graphData.add(BrnDoughnutDataItem(value: state.portfolio.cash, title: '现金', color: Color(0xFF1677ff)));
+    }
 
     // 组装查询股票实盘字符串
     var stockQueryStr = getStockQueryStr();

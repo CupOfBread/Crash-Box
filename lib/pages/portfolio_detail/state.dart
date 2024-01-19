@@ -20,7 +20,6 @@ class PortfolioDetailState {
   late List<Map<String, String>> stockList = [];
   List<Color> randomColors = [
     Color(0xFFff4d4f),
-    Color(0xFF1677ff),
     Color(0xFF722ed1),
     Color(0xFFfa8c16),
     Color(0xFF13c2c2),
