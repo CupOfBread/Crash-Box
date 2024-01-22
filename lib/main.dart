@@ -3,7 +3,6 @@ import 'dart:ui';
 
 import 'package:crash_box/router/app_pages.dart';
 import 'package:crash_box/services/service_locator.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

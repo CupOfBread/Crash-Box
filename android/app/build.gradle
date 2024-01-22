@@ -56,7 +56,8 @@ android {
                 output ->
                     def outputFile = output.outputFile
                     if (outputFile.name.contains("release")) {
-                        outputFileName = "app_release_android.apk"
+//                        outputFileName = "app_release_android.apk"
+                        outputFileName = "crash_box_${defaultConfig.versionName}.apk"
                     }
             }
     }
