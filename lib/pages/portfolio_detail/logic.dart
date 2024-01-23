@@ -102,7 +102,7 @@ class PortfolioDetailLogic extends GetxController {
 
       // 生成饼图
       state.graphData.add(BrnDoughnutDataItem(
-          title: detail.name!.substring(0, detail.name!.length > 4 ? 6 : 4),
+          title: detail.name!.substring(0, detail.name!.length > 4 ? 5 : 4),
           value: detail.unitPrice! * detail.amount!,
           color: state.randomColors[state.graphData.length]));
       // 计算总成本
@@ -128,7 +128,7 @@ class PortfolioDetailLogic extends GetxController {
     //排序（从大到小）
     state.stockList.sort((a, b) =>
         (double.parse(b['amount']!) * double.parse(b['costUnitPrice']!)).compareTo(double.parse(a['amount']!) * double.parse(a['costUnitPrice']!)));
-    BrnToast.show("数据刷新成功", Get.overlayContext!);
+    BrnToast.show("刷新成功", Get.overlayContext!);
   }
 
   /// 生成股票信息列表

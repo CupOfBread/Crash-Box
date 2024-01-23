@@ -26,6 +26,13 @@ class PortfolioDetailState {
     Color(0xFFfadb14),
     Color(0xFFa0d911),
     Color(0xFFeb2f96),
+    Color(0xFFff4d4f),
+    Color(0xFF722ed1),
+    Color(0xFFfa8c16),
+    Color(0xFF13c2c2),
+    Color(0xFFfadb14),
+    Color(0xFFa0d911),
+    Color(0xFFeb2f96),
   ];
 
   List<BrnDoughnutDataItem> graphData = [];

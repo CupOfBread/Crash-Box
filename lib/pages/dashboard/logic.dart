@@ -53,7 +53,7 @@ class DashboardLogic extends GetxController {
         }
       }
     }
-    BrnToast.show("数据刷新成功", Get.overlayContext!);
+    BrnToast.show("刷新成功", Get.overlayContext!);
     update();
   }
 
