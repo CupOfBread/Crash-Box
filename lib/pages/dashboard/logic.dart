@@ -17,6 +17,9 @@ class DashboardLogic extends GetxController {
   }
 
   getStockIndexData() async {
+    state.isLoading = true;
+    update();
+
     final dio = GetIt.I<Dio>();
     final response = await dio.get("/stock/index");
     if (response.data['success'] == false) {
@@ -54,6 +57,7 @@ class DashboardLogic extends GetxController {
       }
     }
     BrnToast.show("刷新成功", Get.overlayContext!);
+    state.isLoading = false;
     update();
   }
 

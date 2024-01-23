@@ -18,6 +18,7 @@ class PortfolioDetailState {
   late bool isTrade = false;
   late List<PortfolioDetail> detailList = [];
   late List<Map<String, String>> stockList = [];
+  bool isLoading = true;
   List<Color> randomColors = [
     Color(0xFFff4d4f),
     Color(0xFF722ed1),

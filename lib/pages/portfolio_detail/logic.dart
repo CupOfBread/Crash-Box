@@ -40,10 +40,11 @@ class PortfolioDetailLogic extends GetxController {
 
   void test() {}
 
-  void doAction(String option) {
+  Future<void> doAction(String option) async {
     if ("refresh" == option) {
-      refreshData();
+      await refreshData();
       update();
+      BrnToast.show("刷新成功", Get.overlayContext!);
     }
     if ("clearance" == option) {
       Get.toNamed("/portfolio/cleared?id=${state.portfolio.id!}");
@@ -74,6 +75,9 @@ class PortfolioDetailLogic extends GetxController {
   }
 
   refreshData() async {
+    state.isLoading = true;
+    update();
+
     final response = await dio.get("portfolio/queryDetail", queryParameters: {'id': state.id});
     // 清理数据
     state.graphData = [];
@@ -128,7 +132,8 @@ class PortfolioDetailLogic extends GetxController {
     //排序（从大到小）
     state.stockList.sort((a, b) =>
         (double.parse(b['amount']!) * double.parse(b['costUnitPrice']!)).compareTo(double.parse(a['amount']!) * double.parse(a['costUnitPrice']!)));
-    BrnToast.show("刷新成功", Get.overlayContext!);
+    state.isLoading = false;
+    update();
   }
 
   /// 生成股票信息列表

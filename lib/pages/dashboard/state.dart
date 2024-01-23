@@ -9,5 +9,7 @@ class DashboardState {
   List<StockBatch> HK_StockIndex = [];
   List<StockBatch> US_StockIndex = [];
 
+  bool isLoading = true;
+
   DashboardState() {}
 }

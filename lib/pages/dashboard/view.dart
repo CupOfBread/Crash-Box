@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 import 'package:getwidget/colors/gf_color.dart';
 import 'package:getwidget/components/appbar/gf_appbar.dart';
 import 'package:getwidget/components/button/gf_icon_button.dart';
+import 'package:getwidget/components/loader/gf_loader.dart';
 import 'package:getwidget/types/gf_button_type.dart';
+import 'package:getwidget/types/gf_loader_type.dart';
 
 import 'logic.dart';
 
@@ -40,6 +42,20 @@ class DashboardPage extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: ListView(
             children: [
+              GetBuilder<DashboardLogic>(builder: (logic) {
+                return state.isLoading
+                    ? const Column(
+                        children: [
+                          SizedBox(height: 14),
+                          GFLoader(
+                            type: GFLoaderType.custom,
+                            loaderIconOne: Text('加载中...'),
+                          ),
+                          SizedBox(height: 14),
+                        ],
+                      )
+                    : const SizedBox();
+              }),
               BrnShadowCard(
                 padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 12),
                 color: Colors.white,

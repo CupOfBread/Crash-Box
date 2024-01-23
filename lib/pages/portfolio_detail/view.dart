@@ -91,6 +91,20 @@ class PortfolioDetailPage extends StatelessWidget {
                   controller: _scrollController,
                   children: [
                     GetBuilder<PortfolioDetailLogic>(builder: (logic) {
+                      return state.isLoading
+                          ? const Column(
+                              children: [
+                                SizedBox(height: 14),
+                                GFLoader(
+                                  type: GFLoaderType.custom,
+                                  loaderIconOne: Text('加载中...'),
+                                ),
+                                SizedBox(height: 14),
+                              ],
+                            )
+                          : const SizedBox();
+                    }),
+                    GetBuilder<PortfolioDetailLogic>(builder: (logic) {
                       return TradeNoticeBar(
                         isTrade: state.isTrade,
                       );
