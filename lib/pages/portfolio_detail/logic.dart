@@ -85,6 +85,7 @@ class PortfolioDetailLogic extends GetxController {
     state.clearanceIncome = 0.0;
     state.stockList = [];
     state.todayIncome = 0.0;
+    state.currentMarketValue = 0.0;
 
     // 获取后端数据
     if (response.data['data']['portfolio'] != null) {
@@ -109,6 +110,7 @@ class PortfolioDetailLogic extends GetxController {
           title: detail.name!.substring(0, detail.name!.length > 4 ? 5 : 4),
           value: detail.unitPrice! * detail.amount!,
           color: state.randomColors[state.graphData.length]));
+
       // 计算总成本
       state.totalCost += detail.unitPrice! * detail.amount!;
     }
@@ -156,7 +158,10 @@ class PortfolioDetailLogic extends GetxController {
       state.isTrade = stockCurrent['is_trade'];
 
       // 累加当日浮动收益
-      state.todayIncome += (stockCurrent['chg'] * detail.amount);
+      state.todayIncome += ((stockCurrent['chg'] ?? 0.0) * detail.amount);
+
+      // 累加当前市值
+      state.currentMarketValue += ((stockCurrent['current'] ?? 0.0) * detail.amount!);
 
       Map<String, String> item = {};
       item["stockName"] = '${detail.name}(${detail.location}${detail.code})';

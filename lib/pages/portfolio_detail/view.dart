@@ -136,6 +136,8 @@ class PortfolioDetailPage extends StatelessWidget {
                         clearanceIncome: state.clearanceIncome,
                         cash: state.portfolio.cash ?? 0,
                         todayIncome: state.todayIncome,
+                        totalCost: state.totalCost,
+                        currentMarketValue: state.currentMarketValue,
                       );
                     }),
                     const SizedBox(height: 8),

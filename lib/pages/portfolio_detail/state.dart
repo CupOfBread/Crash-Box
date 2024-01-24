@@ -7,17 +7,20 @@ import '../../models/PortfolioDetail.dart';
 
 class PortfolioDetailState {
   bool showBackToTopButton = false;
+
   late String id;
   late String name;
-  late Portfolio portfolio = Portfolio(updateTime: DateTime.now(), createTime: DateTime.now(), fund: 0, marketValue: 0, marketValueYes: 0);
-  late PortfolioCharacteristic characteristic = PortfolioCharacteristic();
-  late double incomeRate = 0.0;
-  late double clearanceIncome = 0.0;
-  late double totalCost = 0.0;
-  late double todayIncome = 0.0;
-  late bool isTrade = false;
-  late List<PortfolioDetail> detailList = [];
-  late List<Map<String, String>> stockList = [];
+
+  Portfolio portfolio = Portfolio(updateTime: DateTime.now(), createTime: DateTime.now(), fund: 0, marketValue: 0, marketValueYes: 0);
+  PortfolioCharacteristic characteristic = PortfolioCharacteristic();
+  double incomeRate = 0.0;
+  double clearanceIncome = 0.0;
+  double totalCost = 0.0;
+  double todayIncome = 0.0;
+  double currentMarketValue = 0.0;
+  bool isTrade = false;
+  List<PortfolioDetail> detailList = [];
+  List<Map<String, String>> stockList = [];
   bool isLoading = true;
   List<Color> randomColors = [
     Color(0xFFff4d4f),

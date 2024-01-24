@@ -3,7 +3,14 @@ import 'package:flutter/material.dart';
 
 class FundDetailCard extends StatelessWidget {
   const FundDetailCard(
-      {super.key, required this.fund, required this.marketValue, required this.clearanceIncome, required this.cash, required this.todayIncome});
+      {super.key,
+      required this.fund,
+      required this.marketValue,
+      required this.clearanceIncome,
+      required this.cash,
+      required this.todayIncome,
+      required this.totalCost,
+      required this.currentMarketValue});
 
   // 投入资金额
   final double fund;
@@ -17,8 +24,14 @@ class FundDetailCard extends StatelessWidget {
   // 现金
   final double cash;
 
-  //当日浮动
+  // 当日浮动
   final double todayIncome;
+
+  // 持仓成本
+  final double totalCost;
+
+  // 当前市值
+  final double currentMarketValue;
 
   getColor(double number) {
     if (number == 0) {
@@ -63,8 +76,8 @@ class FundDetailCard extends StatelessWidget {
                 BrnRichGridInfo(
                     '累计浮动：',
                     Text(
-                      (marketValue - fund - clearanceIncome).toStringAsFixed(2),
-                      style: TextStyle(color: getColor(marketValue - fund - clearanceIncome)),
+                      (currentMarketValue - totalCost + cash).toStringAsFixed(2),
+                      style: TextStyle(color: getColor(currentMarketValue - totalCost + cash)),
                     )),
                 BrnRichGridInfo(
                     '总收益额：',
