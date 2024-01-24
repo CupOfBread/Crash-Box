@@ -11,7 +11,7 @@ class PortfolioDetailState {
   late String id;
   late String name;
 
-  Portfolio portfolio = Portfolio(updateTime: DateTime.now(), createTime: DateTime.now(), fund: 0, marketValue: 0, marketValueYes: 0);
+  Portfolio portfolio = Portfolio(updateTime: DateTime.now(), createTime: DateTime.now(), fund: 0, marketValue: 0, marketValueYes: 0, cash: 0);
   PortfolioCharacteristic characteristic = PortfolioCharacteristic();
   double incomeRate = 0.0;
   double clearanceIncome = 0.0;

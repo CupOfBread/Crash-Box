@@ -47,7 +47,7 @@ class PortfolioDetailLogic extends GetxController {
       BrnToast.show("刷新成功", Get.overlayContext!);
     }
     if ("clearance" == option) {
-      Get.toNamed("/portfolio/cleared?id=${state.portfolio.id!}");
+      Get.toNamed("/portfolio/cleared?id=${state.id}");
     }
     if ("historyDigit" == option) {
       BrnToast.show("暂未开发，敬请期待！", Get.overlayContext!);

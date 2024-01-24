@@ -112,9 +112,10 @@ class PortfolioDetailPage extends StatelessWidget {
                     const SizedBox(height: 8),
                     GetBuilder<PortfolioDetailLogic>(builder: (logic) {
                       return OverviewCard(
-                          // 年化收益率=(投资内收益/本金)/(投资天数/365)*100%
-                          // 投资内收益=市值-本金+已清仓股票
-                          annualizedRate: ((state.clearanceIncome + state.portfolio.marketValue! - state.portfolio.fund!) / state.portfolio.fund!) /
+                          // 年化收益率 = (投资内收益 / 本金) / (投资天数 / 365) * 100%
+                          // 投资内收益 = 市值-本金 + 已清仓股票
+                          annualizedRate: ((state.clearanceIncome + state.currentMarketValue + state.portfolio.cash - state.portfolio.fund!) /
+                                  state.portfolio.fund!) /
                               (state.portfolio.updateTime!.difference(state.portfolio.createTime!).inDays / 365) *
                               100,
                           dailyIncreaseRate: (state.portfolio.marketValue! - state.portfolio.marketValueYes!) / state.portfolio.marketValueYes! * 100,
@@ -134,7 +135,7 @@ class PortfolioDetailPage extends StatelessWidget {
                         fund: state.portfolio.fund ?? 0,
                         marketValue: state.portfolio.marketValue ?? 0,
                         clearanceIncome: state.clearanceIncome,
-                        cash: state.portfolio.cash ?? 0,
+                        cash: double.parse(state.portfolio.cash?.toString() ?? '0.0'),
                         todayIncome: state.todayIncome,
                         totalCost: state.totalCost,
                         currentMarketValue: state.currentMarketValue,
