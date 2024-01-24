@@ -30,7 +30,7 @@ void initDio() {
       onResponse: (response, ResponseInterceptorHandler handler) {
         LogI("HTTP Response\nURL: ${response.requestOptions.uri}, METHOD: ${response.requestOptions.method}\n"
             "PARAMS: ${response.statusCode}\n"
-            "DATA: ${response.data}");
+            "DATA: ${response.data.toString().length > 800 ? response.data.toString().substring(0, 800) : response.data}");
         return handler.next(response);
       },
       onError: (DioException error, ErrorInterceptorHandler handler) {
