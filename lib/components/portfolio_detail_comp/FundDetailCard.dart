@@ -88,8 +88,8 @@ class FundDetailCard extends StatelessWidget {
                 BrnRichGridInfo(
                     '总收益率：',
                     Text(
-                      '${((marketValue - fund + clearanceIncome) / fund * 100).toStringAsFixed(2)}%',
-                      style: TextStyle(color: getColor((marketValue - fund + clearanceIncome) / fund)),
+                      '${((marketValue - fund) / fund * 100).toStringAsFixed(2)}%',
+                      style: TextStyle(color: getColor((marketValue - fund) / fund)),
                     )),
               ],
             ),

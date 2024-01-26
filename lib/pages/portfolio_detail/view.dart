@@ -1,4 +1,3 @@
-import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
@@ -114,8 +113,7 @@ class PortfolioDetailPage extends StatelessWidget {
                       return OverviewCard(
                           // 年化收益率 = (投资内收益 / 本金) / (投资天数 / 365) * 100%
                           // 投资内收益 = 市值-本金 + 已清仓股票
-                          annualizedRate: ((state.clearanceIncome + state.currentMarketValue + state.portfolio.cash - state.portfolio.fund!) /
-                                  state.portfolio.fund!) /
+                          annualizedRate: ((state.currentMarketValue + state.portfolio.cash - state.portfolio.fund!) / state.portfolio.fund!) /
                               (state.portfolio.updateTime!.difference(state.portfolio.createTime!).inDays / 365) *
                               100,
                           dailyIncreaseRate: (state.portfolio.marketValue! - state.portfolio.marketValueYes!) / state.portfolio.marketValueYes! * 100,
