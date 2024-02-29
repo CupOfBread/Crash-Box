@@ -107,7 +107,7 @@ class PortfolioDetailLogic extends GetxController {
 
       // 生成饼图
       state.graphData.add(BrnDoughnutDataItem(
-          title: detail.name!.substring(0, detail.name!.length > 4 ? 5 : 4),
+          title: detail.name!.substring(0, detail.name!.length > 4 ? 5 : detail.name!.length),
           value: detail.unitPrice! * detail.amount!,
           color: state.randomColors[state.graphData.length]));
 

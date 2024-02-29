@@ -59,7 +59,7 @@ class FundDetailCard extends StatelessWidget {
               crossAxisCount: 2,
               pairInfoList: [
                 BrnRichGridInfo('投入资金：', fund.toStringAsFixed(2)),
-                BrnRichGridInfo('当前市值：', marketValue.toStringAsFixed(2)),
+                BrnRichGridInfo('当前市值：', (currentMarketValue + cash).toStringAsFixed(2)),
                 BrnRichGridInfo('\t\t\t\t\t\t\t现金：', cash.toStringAsFixed(2)),
                 BrnRichGridInfo(
                     '当日浮动：',

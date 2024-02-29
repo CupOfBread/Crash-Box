@@ -3,6 +3,7 @@ import 'package:crash_box/pages/portfolio_instruction/view.dart';
 import 'package:get/get.dart';
 
 import '../pages/home/view.dart';
+import '../pages/login/view.dart';
 import '../pages/my/view.dart';
 import '../pages/portfolio/view.dart';
 import '../pages/portfolio_cleared/view.dart';
@@ -39,6 +40,10 @@ class AppPages {
     GetPage(
       name: '/dashboard',
       page: () => DashboardPage(),
+    ),
+    GetPage(
+      name: '/login',
+      page: () => LoginPage(),
     ),
   ];
 }

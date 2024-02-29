@@ -23,7 +23,7 @@ class DashboardLogic extends GetxController {
     final dio = GetIt.I<Dio>();
     final response = await dio.get("/stock/index");
     if (response.data['success'] == false) {
-      BrnToast.show("获取指数信息失败，轻链系管理员修复！", Get.overlayContext!);
+      BrnToast.show("获取指数信息失败，请联系管理员修复！", Get.overlayContext!);
       return;
     }
 
